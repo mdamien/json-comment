@@ -5,10 +5,6 @@ from types import ModuleType
 
 ################################################################################
 
-# SOME_CONSTANT = 0
-
-################################################################################
-
 # A Class to simulate dynamic inheritance
 # Allows to change behaviour of multiple modules or classes, with the same
 	# interface
@@ -33,13 +29,5 @@ class GeneralWrapper:
 			return self.object_to_wrap.__dict__[name]
 		else:
 			return self.object_to_wrap.__getattr__(name)
-
-################################################################################
-
-class JsonComment(GeneralWrapper):
-
-	def loads(self, *args, **kwargs):
-		print("Lookup Test")
-		return self.object_to_wrap.loads(*args, **kwargs)
 
 ################################################################################
