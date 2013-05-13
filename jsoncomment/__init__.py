@@ -3,7 +3,6 @@
 
 # User Interface
 
-
 from .comments import JsonComment
 	# Allows JSON libraries to ignore comments
 # (object_to_wrap)

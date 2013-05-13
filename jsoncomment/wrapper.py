@@ -9,7 +9,7 @@ from types import ModuleType
 # Allows to change behaviour of multiple modules or classes, with the same
 	# interface
 # Note: Class wrapping not tested
-class GeneralWrapper:
+class GenericWrapper:
 
 	# object_to_wrap can be:
 	# A Module

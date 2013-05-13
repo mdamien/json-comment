@@ -52,7 +52,7 @@ python setup.py install
 
 ### Examples
 
-Added in the example directory
+Added in the examples directory
 
 - - -
 

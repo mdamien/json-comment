@@ -35,7 +35,8 @@ if __name__ == '__main__':
 	parser = JsonComment(ujson)
 	parsed_object = parser.loads(string)
 
-	print(parsed_object, "\n")
+	print(parsed_object[0]["another key"], "\n")
+
 	print(parser.dumps(parsed_object))
 
 ################################################################################

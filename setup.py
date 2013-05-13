@@ -7,7 +7,7 @@ from distutils.core import setup
 
 setup (
 	name = "jsoncomment",
-	version = "0.0.4",
+	version = "0.1.0",
 	description = "A wrapper to JSON parsers allowing comments and multi line strings",
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",

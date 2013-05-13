@@ -1,7 +1,7 @@
 ﻿
 ################################################################################
 
-from .wrapper import GeneralWrapper
+from .wrapper import GenericWrapper
 
 ################################################################################
 
@@ -15,12 +15,16 @@ LONG_STRING = '"""'
 
 ################################################################################
 
-class JsonComment(GeneralWrapper):
+class JsonComment(GenericWrapper):
 
 	def loads(self, custom_json_string, *args, **kwargs):
 		lines = custom_json_string.splitlines()
 		standard_json = json_preprocess(lines)
 		return self.object_to_wrap.loads(standard_json, *args, **kwargs)
+
+	def load(self, custom_json_file, *args, **kwargs):
+		custom_json_string = custom_json_file.read()
+		return self.loads(custom_json_string, *args, **kwargs)
 
 ################################################################################
 
