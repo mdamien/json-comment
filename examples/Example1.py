@@ -1,9 +1,9 @@
 ﻿
 ################################################################################
 
-from jsoncomment import JsonComment
-
 import ujson
+
+from jsoncomment import JsonComment
 
 ################################################################################
 
@@ -17,7 +17,14 @@ if __name__ == '__main__':
 		[
 			# Objects
 			{
-				"key" : "value"
+				"key" : "value",
+				"another key" :
+				\"\"\"
+				A multiline string.\\n
+				No spacing or formatting is saved, 
+				the whole line is joined with all edge spaces
+				trimmed.
+				\"\"\"
 			},
 			; Other Values
 			81,
@@ -28,7 +35,7 @@ if __name__ == '__main__':
 	parser = JsonComment(ujson)
 	parsed_object = parser.loads(string)
 
-	print(parsed_object)
+	print(parsed_object, "\n")
 	print(parser.dumps(parsed_object))
 
 ################################################################################

@@ -5,42 +5,58 @@ from .wrapper import GeneralWrapper
 
 ################################################################################
 
+# Comments
 COMMENT_PREFIX = ("#",";")
 MULTILINE_START = "/*"
 MULTILINE_END = "*/"
+
+# Data strings
+LONG_STRING = '"""'
 
 ################################################################################
 
 class JsonComment(GeneralWrapper):
 
-	def loads(self, commented_string, *args, **kwargs):
-		lines = commented_string.splitlines()
-		clean_string = remove_comments(lines)
-		return self.object_to_wrap.loads(clean_string, *args, **kwargs)
+	def loads(self, custom_json_string, *args, **kwargs):
+		lines = custom_json_string.splitlines()
+		standard_json = json_preprocess(lines)
+		return self.object_to_wrap.loads(standard_json, *args, **kwargs)
 
 ################################################################################
 
-def remove_comments(lines):
+def json_preprocess(lines):
 
-	clean_string = ""
+	standard_json = ""
 	is_multiline = False
 
 	for line in lines:
+
 		line = line.strip()
-		output_line = line
+
+		if len(line) == 0:
+			continue
 
 		if line.startswith(COMMENT_PREFIX):
-			output_line = ""
+			continue
+
 		elif line.startswith(MULTILINE_START):
 			is_multiline = True
-
-		if is_multiline:
-			output_line = ""
+			# In case both start and end are on the same line
+			# Example: /***** Comment *****/
 			if line.endswith(MULTILINE_END):
 				is_multiline = False
+			continue
 
-		clean_string += output_line
+		elif is_multiline:
+			if line.endswith(MULTILINE_END):
+				is_multiline = False
+			continue
 
-	return clean_string
+		elif LONG_STRING in line:
+			line = line.replace(LONG_STRING, '"')
+
+		standard_json += line
+
+	return standard_json
 
 ################################################################################

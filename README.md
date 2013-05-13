@@ -1,7 +1,7 @@
 ﻿
 # Json Comment
 
-A wrapper to JSON parsers allowing comments
+A wrapper to JSON parsers allowing comments and multi line strings
 
 - - -
 
@@ -17,14 +17,30 @@ ujson 1.30+
 
 ## Description
 
-This package allows to parse JSON files or strings with comments.
+This package allows to parse JSON files or strings with comments and multi line strings.
 
-Comments have to be in their own lines.
+- - -
+
+### Comments
 
 * "#" and ";" are for single line comments
 * "/*" and "*/" enclose multi line comments
 
-It works with any JSON parser which supports "load" and "loads".
+Inline comments are **not** supported
+
+- - -
+
+### Multi line strings
+
+Any string can be multi line, even object keys.
+
+* Multi strings start and end with '"""', like in python
+* The preprocessor merges all lines to a single standard string
+* No edge space or new line is kept. To hard code new lines in the string, use "\\\n"
+
+### Notes
+
+JSON Comment works with any JSON parser which supports "load" and "loads", by adding a preprocessor to these calls.
 
 - - -
 
@@ -34,34 +50,9 @@ It works with any JSON parser which supports "load" and "loads".
 
 python setup.py install
 
-### Example
+### Examples
 
-	from jsoncomment import JsonComment
-	import ujson
-
-	string = """
-		/******************
-		Comment 1
-		Comment 2
-		******************/
-		[
-			# Objects
-			{
-				"key" : "value"
-			},
-			; Other Values
-			81,
-			true
-		]
-	"""
-
-	parser = JsonComment(ujson)
-	parsed_object = parser.loads(string)
-
-	print(parsed_object)
-	print(parser.dumps(parsed_object))
-
-Other examples in the Example directory
+Added in the example directory
 
 - - -
 
