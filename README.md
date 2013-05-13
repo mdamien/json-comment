@@ -11,7 +11,7 @@ Python 3.3.1+
 
 ### Optional
 
-ujson
+ujson 1.30+
 
 - - -
 
