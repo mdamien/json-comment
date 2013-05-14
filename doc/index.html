@@ -1,0 +1,37 @@
+<p># Json Comment</p>
+<p>A wrapper to JSON parsers allowing comments and multi line strings</p>
+<hr />
+<h2 id="dependencies">Dependencies</h2>
+<p>Python 2.7, 3.3</p>
+<h3 id="optional">Optional</h3>
+<p>ujson 1.30+</p>
+<hr />
+<h2 id="description">Description</h2>
+<p>This package allows to parse JSON files or strings with comments and multi line strings.</p>
+<hr />
+<h3 id="comments">Comments</h3>
+<ul>
+<li><code>#</code> and <code>;</code> are for single line comments</li>
+<li><code>/*</code> and <code>*/</code> enclose multi line comments</li>
+</ul>
+<p>Inline comments are <strong>not</strong> supported</p>
+<hr />
+<h3 id="multi-line-strings">Multi line strings</h3>
+<p>Any string can be multi line, even object keys.</p>
+<ul>
+<li>Multi strings start and end with <code>&quot;&quot;&quot;</code>, like in python</li>
+<li>The preprocessor merges all lines to a single standard string</li>
+<li>No edge space or new line is kept. To hard code new lines in the string, use <code>\\\n</code></li>
+</ul>
+<h3 id="notes">Notes</h3>
+<p>JSON Comment works with any JSON parser which supports &quot;load&quot; and &quot;loads&quot;, by adding a preprocessor to these calls.</p>
+<hr />
+<h2 id="usage">Usage</h2>
+<h3 id="install">Install</h3>
+<p>Download source from <a href="https://pypi.python.org/pypi/jsoncomment">Pypi</a></p>
+<p>python setup.py install</p>
+<h3 id="examples">Examples</h3>
+<p>Added in the examples directory</p>
+<hr />
+<h2 id="contact">Contact</h2>
+<p>Dando Real ITA @ <a href="http://steamcommunity.com/id/dandorealita">Steam Profile</a></p>
