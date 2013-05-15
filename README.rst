@@ -63,9 +63,12 @@ Usage
 Install
 ~~~~~~~
 
-Download source from `Pypi <https://pypi.python.org/pypi/jsoncomment>`__
+``pip install jsoncomment``
 
-python setup.py install
+OR
+
+-  Download source
+-  ``python setup.py install``
 
 Call Example
 ~~~~~~~~~~~~
@@ -83,6 +86,14 @@ Examples
 ~~~~~~~~
 
 Added in the /examples directory
+
+--------------
+
+Source
+------
+
+`Source <https://bitbucket.org/Dando_Real_ITA/json-comment/overview>`__
+code available with MIT license on Bitbucket.
 
 --------------
 
