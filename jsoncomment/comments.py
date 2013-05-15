@@ -23,8 +23,7 @@ class JsonComment(GenericWrapper):
 		return self.object_to_wrap.loads(standard_json, *args, **kwargs)
 
 	def load(self, custom_json_file, *args, **kwargs):
-		custom_json_string = custom_json_file.read()
-		return self.loads(custom_json_string, *args, **kwargs)
+		return self.loads(custom_json_file.read(), *args, **kwargs)
 
 ################################################################################
 
@@ -36,32 +35,37 @@ def json_preprocess(lines):
 
 	for line in lines:
 
-		keep_trail_space = 0
-		if line.endswith(" "):
-			keep_trail_space = 1
+		# 0 if there is no trailing space
+		# 1 otherwise
+		keep_trail_space = int(line.endswith(" "))
 
+		# Remove all whitespace on both sides
 		line = line.strip()
 
+		# Skip blank lines
 		if len(line) == 0:
 			continue
 
+		# Skip single line comments
 		if line.startswith(COMMENT_PREFIX):
 			continue
 
-		elif line.startswith(MULTILINE_START):
+		# Mark the start of a multiline comment
+		# Not skipping, to identify single line comments using
+		#   multiline comment tokens, like
+		#   /***** Comment *****/
+		if line.startswith(MULTILINE_START):
 			is_multiline = True
-			# In case both start and end are on the same line
-			# Example: /***** Comment *****/
+
+		# Skip a line of multiline comments
+		if is_multiline:
+			# Mark the end of a multiline comment
 			if line.endswith(MULTILINE_END):
 				is_multiline = False
 			continue
 
-		elif is_multiline:
-			if line.endswith(MULTILINE_END):
-				is_multiline = False
-			continue
-
-		elif LONG_STRING in line:
+		# Replace the multi line data token to the JSON valid one
+		if LONG_STRING in line:
 			line = line.replace(LONG_STRING, '"')
 
 		standard_json += line + " " * keep_trail_space
