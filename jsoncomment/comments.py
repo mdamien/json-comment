@@ -32,8 +32,13 @@ def json_preprocess(lines):
 
 	standard_json = ""
 	is_multiline = False
+	keep_trail_space = 0
 
 	for line in lines:
+
+		keep_trail_space = 0
+		if line.endswith(" "):
+			keep_trail_space = 1
 
 		line = line.strip()
 
@@ -59,7 +64,7 @@ def json_preprocess(lines):
 		elif LONG_STRING in line:
 			line = line.replace(LONG_STRING, '"')
 
-		standard_json += line
+		standard_json += line + " " * keep_trail_space
 
 	return standard_json
 

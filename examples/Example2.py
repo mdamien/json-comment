@@ -3,14 +3,18 @@
 
 from codecs import open
 
-import ujson
+try:
+	import ujson as json
+except ImportError:
+	import json
 
 from jsoncomment import JsonComment
 
 ################################################################################
 
 if __name__ == '__main__':
-	parser = JsonComment(ujson)
+
+	parser = JsonComment(json)
 
 	with open("Example2.json", "r", "utf-8-sig") as file_json:
 		parsed_object = parser.load(file_json)

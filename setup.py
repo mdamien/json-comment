@@ -1,21 +1,19 @@
-﻿
+
 ################################################################################
 
 from distutils.core import setup
 
-from codecs import open
-
 ################################################################################
 
 def read(fname):
-	return open(fname, "r", "utf-8-sig").read()
+	return open(fname).read()
 
 ################################################################################
 
 setup (
 	name = "jsoncomment",
-	version = "0.1.4",
-	description = "A wrapper to JSON parsers allowing comments and multi line strings",
+	version = "0.1.5",
+	description = "A wrapper to JSON parsers allowing comments and multiline strings",
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",
 	keywords = "json comments multiline",
@@ -25,7 +23,7 @@ setup (
 	],
 	data_files = [
 		(".",
-			["COPYING","README.md", "README.rst"]
+			["COPYING", "README.md", "README.rst"]
 		),
 		("doc", ["doc/index.html"]),
 		("examples",

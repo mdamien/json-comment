@@ -7,10 +7,9 @@
 
 ################################################################################
 
-
 {
 	"item 1" : """
-		A long string,
+		A long string, 
 		which I would like to cut.\\n
 		Maybe not.
 		""",
@@ -26,7 +25,7 @@
 			/* Add other items
 			here for good */
 			"good"
-		],
+		]
 	; Done
 }
 
