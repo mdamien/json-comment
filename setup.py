@@ -12,7 +12,7 @@ def read(fname):
 
 setup (
 	name = "jsoncomment",
-	version = "0.2.1",
+	version = "0.2.2",
 	description = "A wrapper to JSON parsers allowing comments and multiline strings",
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",
