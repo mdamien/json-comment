@@ -1,5 +1,5 @@
 <h1 id="json-comment"><a href="#json-comment">Json Comment</a></h1>
-<p>A wrapper to JSON parsers allowing comments and multiline strings</p>
+<p>A wrapper to JSON parsers allowing comments, multiline strings and trailing commas</p>
 <hr />
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
 <p>Python 2.7, 3.3</p>
@@ -11,6 +11,7 @@
 <ul>
 <li>Single and Multi line comments</li>
 <li>Multi line data strings</li>
+<li>Trailing comma in objects and arrays</li>
 </ul>
 <p>This package works with any JSON parser which supports:</p>
 <ul>
@@ -35,15 +36,15 @@
 <li>New line is not kept. To hard code new lines in the string, use <code>\\n</code></li>
 </ul>
 <hr />
-<h2 id="usage"><a href="#usage">Usage</a></h2>
-<h3 id="install"><a href="#install">Install</a></h3>
+<h2 id="install"><a href="#install">Install</a></h2>
 <p><code>pip install jsoncomment</code></p>
 <p>OR</p>
 <ul>
 <li>Download source</li>
 <li><code>python setup.py install</code></li>
 </ul>
-<h3 id="call-example"><a href="#call-example">Call Example</a></h3>
+<hr />
+<h2 id="usage"><a href="#usage">Usage</a></h2>
 <pre><code>import json
 from jsoncomment import JsonComment
 
@@ -55,6 +56,34 @@ parsed_object = parser.loads(string)</code></pre>
 <hr />
 <h2 id="source"><a href="#source">Source</a></h2>
 <p><a href="https://bitbucket.org/Dando_Real_ITA/json-comment/overview">Source</a> code available with MIT license on Bitbucket.</p>
+<hr />
+<h2 id="api"><a href="#api">API</a></h2>
+<p>Added in top level <strong>init</strong>.py</p>
+<h3 id="how-to-read-the-api"><a href="#how-to-read-the-api">How to read the API</a></h3>
+<p>API is split in:</p>
+<pre><code>* `User Interface` for common use
+* `Developer Interface` exposing some internals that could be useful</code></pre>
+<p>For each item ( function or class ), there are 2 blocks of comments, above and below item definition:</p>
+<pre><code>* The top describes the return values
+* The bottom describes the item and call variables</code></pre>
+<p>If call variables have defaults or use duck typing, every allowed value is described</p>
+<p>Example:</p>
+<pre><code># return_value
+    # description
+from .some_module import SomeClass
+    # SomeClass description
+# (
+    # variable_1,
+        # description
+    # variable_2 = something,
+        # description
+
+        # = Default
+            # description of default value ( something )
+        # = something_2
+            # description of alternate form ( duck typing )
+# )</code></pre>
+<p>describes <code>return_value = SomeClass(variable_1, variable_2 = current_value)</code></p>
 <hr />
 <h2 id="contact"><a href="#contact">Contact</a></h2>
 <p>Dando Real ITA @ <a href="http://steamcommunity.com/id/dandorealita">Steam Profile</a></p>

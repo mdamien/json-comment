@@ -10,10 +10,18 @@ def read(fname):
 
 ################################################################################
 
+DESCRIPTION = """
+A wrapper to JSON parsers allowing comments,
+multiline strings and trailing commas
+"""
+
+
+################################################################################
+
 setup (
 	name = "jsoncomment",
-	version = "0.2.2",
-	description = "A wrapper to JSON parsers allowing comments and multiline strings",
+	version = "0.2.3",
+	description = DESCRIPTION,
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",
 	keywords = "json comments multiline",

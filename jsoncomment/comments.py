@@ -70,6 +70,10 @@ def json_preprocess(lines):
 
 		standard_json += line + " " * keep_trail_space
 
+	# Removing non-standard trailing commas
+	standard_json = standard_json.replace(",]", "]")
+	standard_json = standard_json.replace(",}", "}")
+
 	return standard_json
 
 ################################################################################

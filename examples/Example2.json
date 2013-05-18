@@ -24,9 +24,11 @@
 			"asd",
 			/* Add other items
 			here for good */
-			"good"
-		]
+			"good",
+			# Trailing comma removed
+		],
 	; Done
+	/* Again, an hanging comma. However, don't write a space after the comma */
 }
 
 ################################################################################

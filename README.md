@@ -1,6 +1,7 @@
 ﻿# Json Comment
 
-A wrapper to JSON parsers allowing comments and multiline strings
+A wrapper to JSON parsers allowing comments, multiline strings and 
+trailing commas
 
 - - -
 
@@ -20,6 +21,7 @@ JSON Comment allows to parse JSON files or strings with:
 
 * Single and Multi line comments
 * Multi line data strings
+* Trailing comma in objects and arrays
 
 This package works with any JSON parser which supports:
 
@@ -50,9 +52,7 @@ Any string can be multiline, even object keys.
 
 - - -
 
-## Usage
-
-### Install
+## Install
 
 `pip install jsoncomment`
 
@@ -61,7 +61,9 @@ OR
 * Download source
 * `python setup.py install`
 
-### Call Example
+- - -
+
+## Usage
 
 	import json
 	from jsoncomment import JsonComment
@@ -79,6 +81,48 @@ Added in the /examples directory
 ## Source
 
 [Source](https://bitbucket.org/Dando_Real_ITA/json-comment/overview) code available with MIT license on Bitbucket.
+
+- - -
+
+## API
+
+Added in top level __init__.py
+
+### How to read the API
+
+API is split in:
+
+	* `User Interface` for common use
+	* `Developer Interface` exposing some internals that could be useful
+
+For each item ( function or class ), there are 2 blocks of comments, above 
+and below item definition:
+
+	* The top describes the return values
+	* The bottom describes the item and call variables
+
+If call variables have defaults or use duck typing, every allowed value is 
+described
+
+Example:
+
+	# return_value
+		# description
+	from .some_module import SomeClass
+		# SomeClass description
+	# (
+		# variable_1,
+			# description
+		# variable_2 = something,
+			# description
+
+			# = Default
+				# description of default value ( something )
+			# = something_2
+				# description of alternate form ( duck typing )
+	# )
+
+describes `return_value = SomeClass(variable_1, variable_2 = current_value)`
 
 - - -
 

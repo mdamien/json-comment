@@ -27,11 +27,12 @@ Comment 2
 		A multiline string.\\n
 		It will wrap to single line, 
 		but a trailing space per line is kept.
-		\"\"\"
+		\"\"\",
 	},
 	; Other Values
 	81,
-	true
+	; Allow a non standard trailing comma
+	true,
 ]
 """
 
