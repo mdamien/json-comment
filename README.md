@@ -86,7 +86,7 @@ Added in the /examples directory
 
 ## API
 
-Added in top level __init__.py
+Added in top level `__init__.py`
 
 ### How to read the API
 

@@ -15,7 +15,6 @@ A wrapper to JSON parsers allowing comments,
 multiline strings and trailing commas
 """
 
-
 ################################################################################
 
 setup (
@@ -26,9 +25,11 @@ setup (
 	author_email = "gaspareiengo@gmail.com",
 	keywords = "json comments multiline",
 	url = "https://bitbucket.org/Dando_Real_ITA/json-comment",
+
 	packages = [
 		"jsoncomment"
 	],
+
 	data_files = [
 		(".",
 			["COPYING", "README.md", "README.rst"]
@@ -42,7 +43,9 @@ setup (
 			]
 		),
 	],
+
 	long_description = read("README.rst"),
+
 	classifiers = [
 		"Development Status :: 3 - Alpha",
 		"Intended Audience :: End Users/Desktop",
