@@ -39,8 +39,12 @@ Comment 2
 	parser = JsonComment(json)
 	parsed_object = parser.loads(string)
 
+	print("\n", "*"*80, "\n")
+
 	print(parsed_object[0]["another key"], "\n")
 
-	print(parser.dumps(parsed_object))
+	print(parser.dumps(parsed_object), "\n")
+
+	print("\n", "*"*80, "\n")
 
 ################################################################################

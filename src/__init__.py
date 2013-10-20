@@ -7,7 +7,7 @@
 	# The new parser can be used as a drop in replacement of the old parser,
 	#   supporting both wrapped ( i.e. loads ) and unchanged ( i.e. dumps )
 	#   methods
-from .comments import JsonComment
+from .package import JsonComment
 	# Allows any JSON parser to ignore comments, accept multiline strings and
 	#   a trailing comma in objects/arrays
 # (json_parser_module)
@@ -19,13 +19,15 @@ from .comments import JsonComment
 
 # wrapped_item
 	# An instance mimicking the wrapped object
-from .wrapper import GenericWrapper
+from .package import GenericWrapper
 	# Simulates dynamic inheritance of Classes and Modules.
 	#   Wrapper and Wrapped states are kept independent, unlike common
 	#   inheritance.
 	# This class should only be inherited from.
 	#   Inheriting classes can access their wrapped object via
 	#   self.object_to_wrap
+# (object_to_wrap)
+	# Module or Class Instance to be wrapped
 
 	# Use example:
 		# class WrapMyClass(GenericWrapper):
@@ -49,8 +51,5 @@ from .wrapper import GenericWrapper
 		# print(wrapped_class.method2(some_variable1, some_variable2))
 		# # The original method, untouched by the wrapper
 		# print(wrapped_class.method3(anything))
-
-# (object_to_wrap)
-	# Module or Class Instance to be wrapped
 
 ################################################################################

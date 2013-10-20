@@ -25,7 +25,7 @@ JSON Comment allows to parse JSON files or strings with:
 
 -  Single and Multi line comments
 -  Multi line data strings
--  Trailing comma in objects and arrays
+-  Trailing commas in objects and arrays, after the last item
 
 This package works with any JSON parser which supports:
 
@@ -52,8 +52,8 @@ Multiline strings
 Any string can be multiline, even object keys.
 
 -  Multiline strings start and end with ``"""``, like in python
--  The preprocessor merges all lines to a single standard string
--  A single trailing space is kept, if present
+-  The preprocessor merges all lines to a single JSON standard string
+-  A single trailing space per line is kept, if present
 -  New line is not kept. To hard code new lines in the string, use
    ``\\n``
 
@@ -90,6 +90,16 @@ Added in the /examples directory
 
 --------------
 
+Limitations
+~~~~~~~~~~~
+
+-  ``#``, ``;`` and ``/*`` may be preceded only by whitespaces or tabs
+   on the same line
+-  ``*/`` may be followed only by whitespaces or tabs on the same line
+-  The trailing comma must be the last character on the same line
+
+--------------
+
 Source
 ------
 
@@ -101,7 +111,7 @@ code available with MIT license on Bitbucket.
 API
 ---
 
-Added in top level **init**.py
+Added in top level ``__init__.py``
 
 How to read the API
 ~~~~~~~~~~~~~~~~~~~

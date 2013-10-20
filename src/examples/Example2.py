@@ -19,9 +19,13 @@ if __name__ == '__main__':
 	with open("Example2.json", "r", "utf-8-sig") as file_json:
 		parsed_object = parser.load(file_json)
 
+		print("\n", "*"*80, "\n")
+
 		print(parsed_object["item 1"], "\n")
 		print(parsed_object["Section/Subsection"], "\n")
 
-		print(parser.dumps(parsed_object))
+		print(parser.dumps(parsed_object), "\n")
+
+		print("\n", "*"*80, "\n")
 
 ################################################################################

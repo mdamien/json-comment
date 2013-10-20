@@ -1,3 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#json-comment">Json Comment</a><ul>
+<li><a href="#dependencies">Dependencies</a><ul>
+<li><a href="#optional">Optional</a></li>
+</ul></li>
+<li><a href="#description">Description</a><ul>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#multiline-strings">Multiline strings</a></li>
+</ul></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#limitations">Limitations</a></li>
+</ul></li>
+<li><a href="#source">Source</a></li>
+<li><a href="#api">API</a><ul>
+<li><a href="#how-to-read-the-api">How to read the API</a></li>
+</ul></li>
+<li><a href="#contact">Contact</a></li>
+</ul></li>
+</ul>
+</div>
 <h1 id="json-comment"><a href="#json-comment">Json Comment</a></h1>
 <p>A wrapper to JSON parsers allowing comments, multiline strings and trailing commas</p>
 <hr />
@@ -11,7 +44,7 @@
 <ul>
 <li>Single and Multi line comments</li>
 <li>Multi line data strings</li>
-<li>Trailing comma in objects and arrays</li>
+<li>Trailing commas in objects and arrays, after the last item</li>
 </ul>
 <p>This package works with any JSON parser which supports:</p>
 <ul>
@@ -31,8 +64,8 @@
 <p>Any string can be multiline, even object keys.</p>
 <ul>
 <li>Multiline strings start and end with <code>&quot;&quot;&quot;</code>, like in python</li>
-<li>The preprocessor merges all lines to a single standard string</li>
-<li>A single trailing space is kept, if present</li>
+<li>The preprocessor merges all lines to a single JSON standard string</li>
+<li>A single trailing space per line is kept, if present</li>
 <li>New line is not kept. To hard code new lines in the string, use <code>\\n</code></li>
 </ul>
 <hr />
@@ -54,11 +87,18 @@ parsed_object = parser.loads(string)</code></pre>
 <h3 id="examples"><a href="#examples">Examples</a></h3>
 <p>Added in the /examples directory</p>
 <hr />
+<h3 id="limitations"><a href="#limitations">Limitations</a></h3>
+<ul>
+<li><code>#</code>, <code>;</code> and <code>/*</code> may be preceded only by whitespaces or tabs on the same line</li>
+<li><code>*/</code> may be followed only by whitespaces or tabs on the same line</li>
+<li>The trailing comma must be the last character on the same line</li>
+</ul>
+<hr />
 <h2 id="source"><a href="#source">Source</a></h2>
 <p><a href="https://bitbucket.org/Dando_Real_ITA/json-comment/overview">Source</a> code available with MIT license on Bitbucket.</p>
 <hr />
 <h2 id="api"><a href="#api">API</a></h2>
-<p>Added in top level <strong>init</strong>.py</p>
+<p>Added in top level <code>__init__.py</code></p>
 <h3 id="how-to-read-the-api"><a href="#how-to-read-the-api">How to read the API</a></h3>
 <p>API is split in:</p>
 <pre><code>* `User Interface` for common use
@@ -87,3 +127,5 @@ from .some_module import SomeClass
 <hr />
 <h2 id="contact"><a href="#contact">Contact</a></h2>
 <p>Dando Real ITA @ <a href="http://steamcommunity.com/id/dandorealita">Steam Profile</a></p>
+</body>
+</html>

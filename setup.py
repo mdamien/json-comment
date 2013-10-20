@@ -19,35 +19,36 @@ multiline strings and trailing commas
 
 setup (
 	name = "jsoncomment",
-	version = "0.2.3",
+	version = "0.3.0",
 	description = DESCRIPTION,
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",
 	keywords = "json comments multiline",
 	url = "https://bitbucket.org/Dando_Real_ITA/json-comment",
 
+	package_dir = {
+		'jsoncomment': 'src'
+	},
+
 	packages = [
-		"jsoncomment"
+		"jsoncomment",
+		"jsoncomment.package",
 	],
 
-	data_files = [
-		(".",
-			["COPYING", "README.md", "README.rst"]
-		),
-		("doc", ["doc/index.html"]),
-		("examples",
-			[
-				"examples/Example1.py",
-				"examples/Example2.json",
-				"examples/Example2.py"
-			]
-		),
-	],
+	package_data = {
+		"jsoncomment": [
+			"COPYING",
+			"README.md",
+			"README.rst",
+			"doc/*.*",
+			"examples/*.*",
+		],
+	},
 
-	long_description = read("README.rst"),
+	long_description = read("src/README.rst"),
 
 	classifiers = [
-		"Development Status :: 3 - Alpha",
+		"Development Status :: 4 - Beta",
 		"Intended Audience :: End Users/Desktop",
 		"License :: OSI Approved :: MIT License",
 		"Natural Language :: English",
