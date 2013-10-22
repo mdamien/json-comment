@@ -1,6 +1,8 @@
 ﻿
 ################################################################################
 
+from io import StringIO
+
 from .wrapper import GenericWrapper
 
 ################################################################################
@@ -18,62 +20,72 @@ LONG_STRING = '"""'
 class JsonComment(GenericWrapper):
 
 	def loads(self, custom_json_string, *args, **kwargs):
-		lines = custom_json_string.splitlines()
-		standard_json = json_preprocess(lines)
-		return self.object_to_wrap.loads(standard_json, *args, **kwargs)
+		# lines = custom_json_string.splitlines()
+		standard_json = json_preprocess(custom_json_string)
+		# return self.object_to_wrap.loads(standard_json, *args, **kwargs)
 
 	def load(self, custom_json_file, *args, **kwargs):
 		return self.loads(custom_json_file.read(), *args, **kwargs)
 
 ################################################################################
 
-def json_preprocess(lines):
+def json_preprocess(custom_json_string):
 
-	standard_json = ""
-	is_multiline = False
-	keep_trail_space = 0
+	stream_in = StringIO(custom_json_string)
+	stream_out = StringIO()
 
-	for line in lines:
+	first_char_in_line = stream_in.read(1)
+	while first_char_in_line:
+		while first_char_in_line in (" ","\t","\n"):
+			first_char_in_line = stream_in.read(1)
+		if first_char_in_line in COMMENT_PREFIX:
+			stream_in.readline()
+		else:
+			stream_out.write(first_char_in_line)
+			stream_out.write(stream_in.readline())
+		first_char_in_line = stream_in.read(1)
 
-		# 0 if there is no trailing space
-		# 1 otherwise
-		keep_trail_space = int(line.endswith(" "))
+	print(stream_out.getvalue())
+	stream_in.close()
+	stream_out.close()
 
-		# Remove all whitespace on both sides
-		line = line.strip()
+	# standard_json = ""
+	# is_multiline = False
+	# keep_trail_space = 0
 
-		# Skip blank lines
-		if len(line) == 0:
-			continue
+	# for line in lines:
 
-		# Skip single line comments
-		if line.startswith(COMMENT_PREFIX):
-			continue
+		# # 0 if there is no trailing space
+		# # 1 otherwise
+		# keep_trail_space = int(line.endswith(" "))
 
-		# Mark the start of a multiline comment
-		# Not skipping, to identify single line comments using
-		#   multiline comment tokens, like
-		#   /***** Comment *****/
-		if line.startswith(MULTILINE_START):
-			is_multiline = True
+		# # Remove all whitespace on both sides
+		# line = line.strip()
 
-		# Skip a line of multiline comments
-		if is_multiline:
-			# Mark the end of a multiline comment
-			if line.endswith(MULTILINE_END):
-				is_multiline = False
-			continue
+		# # Mark the start of a multiline comment
+		# # Not skipping, to identify single line comments using
+		# #   multiline comment tokens, like
+		# #   /***** Comment *****/
+		# if line.startswith(MULTILINE_START):
+			# is_multiline = True
 
-		# Replace the multi line data token to the JSON valid one
-		if LONG_STRING in line:
-			line = line.replace(LONG_STRING, '"')
+		# # Skip a line of multiline comments
+		# if is_multiline:
+			# # Mark the end of a multiline comment
+			# if line.endswith(MULTILINE_END):
+				# is_multiline = False
+			# continue
 
-		standard_json += line + " " * keep_trail_space
+		# # Replace the multi line data token to the JSON valid one
+		# if LONG_STRING in line:
+			# line = line.replace(LONG_STRING, '"')
 
-	# Removing non-standard trailing commas
-	standard_json = standard_json.replace(",]", "]")
-	standard_json = standard_json.replace(",}", "}")
+		# standard_json += line + " " * keep_trail_space
 
-	return standard_json
+	# # Removing non-standard trailing commas
+	# standard_json = standard_json.replace(",]", "]")
+	# standard_json = standard_json.replace(",}", "}")
+
+	# return standard_json
 
 ################################################################################
