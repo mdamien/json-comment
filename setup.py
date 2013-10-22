@@ -27,7 +27,7 @@ setup (
 	url = "https://bitbucket.org/Dando_Real_ITA/json-comment",
 
 	package_dir = {
-		'jsoncomment': 'src'
+		"jsoncomment": "src"
 	},
 
 	packages = [
