@@ -36,16 +36,47 @@ def json_preprocess(custom_json_string):
 
 	first_char_in_line = stream_in.read(1)
 	while first_char_in_line:
+
 		while first_char_in_line in (" ","\t","\n"):
 			first_char_in_line = stream_in.read(1)
+
 		if first_char_in_line in COMMENT_PREFIX:
 			stream_in.readline()
+
+		# /
+		elif first_char_in_line == MULTILINE_START[0]:
+			second_char_in_line = stream_in.read(1)
+
+			# * oppure altro
+			if second_char_in_line == MULTILINE_START[1]:
+
+				first_char = stream_in.read(1)
+				is_multiline = True
+
+				while is_multiline:
+					second_char = stream_in.read(1)
+					if (first_char + second_char) == MULTILINE_END:
+						is_multiline = False
+						stream_in.readline()
+					else:
+						first_char = second_char
+
+				first_char_in_line = stream_in.read(1)
+				print(first_char_in_line)
+
+			# Se altro, scrivo i 2 char e la riga
+			else:
+				stream_out.write(first_char_in_line)
+				stream_out.write(second_char_in_line)
+				stream_out.write(stream_in.readline())
+
 		else:
 			stream_out.write(first_char_in_line)
 			stream_out.write(stream_in.readline())
+
 		first_char_in_line = stream_in.read(1)
 
-	print(stream_out.getvalue())
+	# print(stream_out.getvalue())
 	stream_in.close()
 	stream_out.close()
 
