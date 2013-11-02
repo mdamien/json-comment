@@ -42,6 +42,7 @@ setup (
 			"README.rst",
 			"doc/*.*",
 			"examples/*.*",
+			"tests/*.*",
 		],
 	},
 

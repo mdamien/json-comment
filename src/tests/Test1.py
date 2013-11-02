@@ -85,8 +85,9 @@ if __name__ == '__main__':
 				\n".format(
 					LOOPS,
 					p_tests[name][loop],
-					p_tests[name][loop]/LOOPS*10**6)
+					p_tests[name][loop]/LOOPS*10**6
 				)
+			)
 		print("\n")
 
 	print("\n", "*"*80, "\n")
