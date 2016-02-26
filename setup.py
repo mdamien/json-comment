@@ -19,7 +19,7 @@ multiline strings and trailing commas
 
 setup (
 	name = "jsoncomment",
-	version = "0.3.0",
+	version = "0.4.0",
 	description = DESCRIPTION,
 	author = "Gaspare Iengo",
 	author_email = "gaspareiengo@gmail.com",

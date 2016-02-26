@@ -6,7 +6,7 @@ from .wrapper import GenericWrapper
 ################################################################################
 
 # Comments
-COMMENT_PREFIX = ("#",";")
+COMMENT_PREFIX = ("#",";",'//')
 MULTILINE_START = "/*"
 MULTILINE_END = "*/"
 
