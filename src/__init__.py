@@ -7,7 +7,7 @@
 	# The new parser can be used as a drop in replacement of the old parser,
 	#   supporting both wrapped ( i.e. loads ) and unchanged ( i.e. dumps )
 	#   methods
-from .package import JsonComment
+from .package import JsonComment, strip_json_comments
 	# Allows any JSON parser to ignore comments, accept multiline strings and
 	#   a trailing comma in objects/arrays
 # (json_parser_module)
